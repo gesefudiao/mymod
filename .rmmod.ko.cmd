@@ -1,0 +1,1 @@
+cmd_/home/gesefudiao/mymod/rmmod.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/gesefudiao/mymod/rmmod.ko /home/gesefudiao/mymod/rmmod.o /home/gesefudiao/mymod/rmmod.mod.o

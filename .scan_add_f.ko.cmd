@@ -1,0 +1,1 @@
+cmd_/home/gesefudiao/mymod/scan_add_f.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/gesefudiao/mymod/scan_add_f.ko /home/gesefudiao/mymod/scan_add_f.o /home/gesefudiao/mymod/scan_add_f.mod.o
