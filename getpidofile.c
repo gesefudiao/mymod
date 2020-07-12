@@ -17,8 +17,8 @@
 
 
 
-#define PROC_LOG_FILE "/home/k8s/gesefudao/add.txt"
-#define PROC_IN_FILE "/home/k8s/gesefudao/in.txt"
+#define PROC_LOG_FILE "/home/gesefudiao/add.txt"
+#define PROC_IN_FILE "/home/gesefudiao/in.txt"
 
 
 MODULE_LICENSE("GPL");
