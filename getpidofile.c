@@ -14,11 +14,13 @@
 #include<asm/uaccess.h>
 #include<asm/tlbflush.h>
 
+#include<linux/ctype.h>
+
 
 
 
 #define PROC_LOG_FILE "/home/gesefudiao/add.txt"
-#define PROC_IN_FILE "/home/gesefudiao/in.txt"
+#define PROC_IN_FILE "/home/gesefudiao/mymod/in.txt"
 
 
 MODULE_LICENSE("GPL");
@@ -249,6 +251,9 @@ static int show_add_init(void){
     unsigned long long f_offset=0;
     unsigned long long f_inoffset=0;
     char inbuf[512];
+    char temp[20];
+    int i = 0;
+    int j = 0;
 
  //   logfile = file_open(PROC_LOG_FILE, O_RDWR | O_APPEND | O_CREAT, 0644);
     infile = file_open(PROC_IN_FILE, O_RDWR, 0644);
@@ -257,9 +262,34 @@ static int show_add_init(void){
 //    memset(buf, 0, 2048);
     // sprintf(buf, "%s","scanning running!>>>>>>>>>>>>>>>>>>>\n");
     file_read(infile, f_inoffset, (char *)inbuf, 512);
-    kstrtouint(inbuf,10,&pid_n);
+    printk("%s%10d",inbuf,strlen(inbuf));
+    while(inbuf[j])
+    {
+        if(isalnum(inbuf[j]))
+        {
+            temp[i++]=inbuf[j++];
+        }
+            
+        else
+        {
+            temp[i]='\0';
+            j++;
+            printk(KERN_ALERT"%d%10s",j,temp);
+            kstrtouint(temp,10,&pid_n);
+            printk(KERN_ALERT"275:%d",pid_n);
+            memset(temp,0,20);
+            i=0;
+        }
+    }
+    
+    printk(KERN_ALERT,"%d",j);
+    temp[i++]='\0';
+    printk(KERN_ALERT"%d %s",strlen(temp),temp);
+    kstrtouint(temp,10,&pid_n);
+    printk(KERN_ALERT"282:%d",pid_n);
+    
 	printk(KERN_ALERT "scanning running!>>>>>>>>>>>>>>>>>>>\n");
-    printk("%d,buf len:%ld!\n",pid_n,strlen(buf));
+    // printk("%d,buf len:%ld!\n",pid_n,strlen(buf));
 	//  check pid_n
 	if(pid_n!=-1)
         printk("pid_n receive successfully:%d!",pid_n);

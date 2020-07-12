@@ -889,6 +889,7 @@ deps_/home/gesefudiao/mymod/getpidofile.o := \
   include/linux/ioprio.h \
   include/linux/iocontext.h \
   arch/x86/include/asm/tlbflush.h \
+  include/linux/ctype.h \
 
 /home/gesefudiao/mymod/getpidofile.o: $(deps_/home/gesefudiao/mymod/getpidofile.o)
 

@@ -21,6 +21,7 @@ __attribute__((section("__versions"))) = {
 	{ 0xdb7305a1, __VMLINUX_SYMBOL_STR(__stack_chk_fail) },
 	{ 0x1eb7ab37, __VMLINUX_SYMBOL_STR(filp_close) },
 	{ 0x69ad2f20, __VMLINUX_SYMBOL_STR(kstrtouint) },
+	{ 0x11089ac7, __VMLINUX_SYMBOL_STR(_ctype) },
 	{ 0x9fd05898, __VMLINUX_SYMBOL_STR(vfs_read) },
 	{ 0x27e1a049, __VMLINUX_SYMBOL_STR(printk) },
 	{ 0xddaeff80, __VMLINUX_SYMBOL_STR(filp_open) },
@@ -34,4 +35,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "8DDECD6807D749AB0B0292C");
+MODULE_INFO(srcversion, "49E88B4200A6C76BAC9C788");
