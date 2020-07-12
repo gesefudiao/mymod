@@ -1,0 +1,1 @@
+cmd_/home/gesefudiao/mymod/getpidofile.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/gesefudiao/mymod/getpidofile.ko /home/gesefudiao/mymod/getpidofile.o /home/gesefudiao/mymod/getpidofile.mod.o
