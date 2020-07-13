@@ -20,7 +20,7 @@
 
 
 #define PROC_LOG_FILE "/home/gesefudiao/add.txt"
-#define PROC_IN_FILE "/home/gesefudiao/mymod/in.txt"
+#define PROC_IN_FILE "/home/gesefudiao/mymod/in"
 
 
 MODULE_LICENSE("GPL");
@@ -53,8 +53,8 @@ static struct file *file_open(const char *path, int flags, int rights)
     struct file *filp = NULL;
     mm_segment_t oldfs;
 
-    oldfs = get_fs();
-    set_fs(get_ds());
+//    oldfs = get_fs();
+//    set_fs(get_ds());
     filp = filp_open(path, flags, rights);
     set_fs(oldfs);
     if (IS_ERR(filp)) {
@@ -258,12 +258,13 @@ static int show_add_init(void){
  //   logfile = file_open(PROC_LOG_FILE, O_RDWR | O_APPEND | O_CREAT, 0644);
     infile = file_open(PROC_IN_FILE, O_RDWR, 0644);
 //    printk("%p",logfile);
-    printk("%p",infile);
+    printk("%p\n",infile);
 //    memset(buf, 0, 2048);
     // sprintf(buf, "%s","scanning running!>>>>>>>>>>>>>>>>>>>\n");
+//    memset(buf,0,512);
     file_read(infile, f_inoffset, (char *)inbuf, 512);
-    printk("%s%10d",inbuf,strlen(inbuf));
-    while(inbuf[j])
+    printk("%s%10d\n",inbuf,strlen(inbuf));
+    while(inbuf[j] && (isalnum(inbuf[j]) || isspace(inbuf[j]))  )
     {
         if(isalnum(inbuf[j]))
         {
@@ -280,9 +281,10 @@ static int show_add_init(void){
             memset(temp,0,20);
             i=0;
         }
+        printk("%d\n",j);
     }
     
-    printk(KERN_ALERT,"%d",j);
+    printk(KERN_ALERT,"%d\n",j);
     temp[i++]='\0';
     printk(KERN_ALERT"%d %s",strlen(temp),temp);
     kstrtouint(temp,10,&pid_n);
